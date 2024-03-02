@@ -2,7 +2,11 @@
 
 Example code for Python `python-docx` package.
 
-[`python-docx` Example - ChatGPT](https://chat.openai.com/share/a0e868bf-5eed-4ffe-a368-7f8d0b3fec1e)
+## Resources
+
+[https://python-docx.readthedocs.io/en/latest/](https://python-docx.readthedocs.io/en/latest/)
+
+## [`python-docx` Example - ChatGPT](https://chat.openai.com/share/a0e868bf-5eed-4ffe-a368-7f8d0b3fec1e)
 
 You can use the `python-docx` library to create and manipulate Microsoft Word (.docx) files in Python. It provides a rich set of features that allow you to create documents, add text, images, tables, and more.
 
@@ -35,3 +39,4 @@ doc.save('example.docx')
 This code creates a new Word document, adds a title with the text "Document Title" at the top of the document, adds a paragraph with some sample text, and then saves the document as `example.docx` in the current working directory.
 
 You can add more content to the document by using methods like `add_paragraph()` for additional paragraphs, `add_heading()` for headings at different levels, and many other methods provided by `python-docx` to include tables, images, and other document elements.
+
