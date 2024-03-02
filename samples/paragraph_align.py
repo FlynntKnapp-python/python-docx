@@ -4,7 +4,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from utils import delete_and_save_docx, create_docx_if_not_exists
 
 # Specify the file path for the .docx file
-file_path = "output/ParagraphAlign.docx"
+file_path = "samples/output/ParagraphAlign.docx"
 
 # Create a new Document
 doc = Document()

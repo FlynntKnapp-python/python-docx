@@ -1,9 +1,9 @@
 from docx import Document
 
-from utils import delete_and_save_docx
+from utils import create_docx_if_not_exists, delete_and_save_docx
 
 # Specify the file path for the .docx file
-file_path = "output/TableSimple.docx"
+file_path = "samples/output/TableSimple.docx"
 
 # Create a new Document
 doc = Document()
@@ -25,6 +25,10 @@ for col0, col1, col2 in records:
     row_cells[0].text = col0
     row_cells[1].text = col1
     row_cells[2].text = col2
+
+
+# Create the .docx file if it does not exist
+create_docx_if_not_exists(file_path, doc)
 
 # Save the document to a .docx file
 delete_and_save_docx(file_path, doc)

@@ -1,10 +1,10 @@
 from docx import Document
 from docx.shared import Inches
 
-from utils import delete_and_save_docx
+from utils import delete_and_save_docx, create_docx_if_not_exists
 
 # Specify the file path for the .docx file
-file_path = "output/Demo.docx"
+file_path = "samples/output/Demo.docx"
 
 document = Document()
 
@@ -42,6 +42,9 @@ for qty, id, desc in records:
     row_cells[2].text = desc
 
 document.add_page_break()
+
+# Create the .docx file if it does not exist
+create_docx_if_not_exists(file_path, document)
 
 # Save the document to a .docx file
 delete_and_save_docx(file_path, document)
