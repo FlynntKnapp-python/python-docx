@@ -4,6 +4,45 @@ from typing import Any
 from docx import Document
 
 
+def load_docx_if_exists(path: str) -> Document:
+    """
+    Load a .docx file if it exists.
+
+    Parameters:
+    - path (str): The file system path where the .docx file is saved.
+
+    Returns:
+    - Document: The docx.Document object representing the .docx file.
+    """
+    if os.path.exists(path):
+        print(f"Loading {path}...")
+        document = Document(path)
+        print(f"Document loaded from {path}.")
+        return document
+    else:
+        print(f"The file {path} does not exist.")
+        return Document()
+
+
+def create_docx_if_not_exists(path: str, document: Any):
+    """
+    Create a .docx file if it does not exist.
+
+    Parameters:
+    - path (str): The file system path where the .docx file is saved. If the file exists, it will not be created.
+    - document (Any): The object to be saved. This object represents a Word document.
+
+    Returns:
+    - None
+    """
+    if not os.path.exists(path):
+        print(f"Creating {path}...")
+        document.save(path)
+        print(f"Document created at {path}.")
+    else:
+        print(f"The file {path} already exists.")
+
+
 def delete_and_save_docx(path: str, document: Document):
     """
     Delete the file if it exists and save the document to a .docx file.
