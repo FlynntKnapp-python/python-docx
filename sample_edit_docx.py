@@ -21,5 +21,5 @@ p = doc.add_paragraph(
 )
 
 # Add another heading to the document
-doc.add_heading("Another Heading", level=1)
+doc.add_heading(f"Another Heading: {len(doc.paragraphs)}", level=1)
 delete_and_save_docx(file_path, doc)

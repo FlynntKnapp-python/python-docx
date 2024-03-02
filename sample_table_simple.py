@@ -13,9 +13,9 @@ doc.add_heading("The Official Table Example!", 0)
 
 # Create a list of records
 records = (
-    ("Skill 00", "Skill 03", "Skill 06"),
-    ("Skill 01", "Skill 04", "Skill 07"),
-    ("Skill 02", "Skill 05", "Skill 08"),
+    ("Skill 00", "Skill 10", "Skill 20"),
+    ("Skill 01", "Skill 11", "Skill 21"),
+    ("Skill 02", "Skill 12", "Skill 22"),
 )
 
 # Add a table, which contains the records, to the document
