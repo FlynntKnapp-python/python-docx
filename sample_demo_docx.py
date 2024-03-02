@@ -1,6 +1,11 @@
 from docx import Document
 from docx.shared import Inches
 
+from utils import delete_and_save_docx
+
+# Specify the file path for the .docx file
+file_path = "output/Demo.docx"
+
 document = Document()
 
 document.add_heading("Document Title", 0)
@@ -38,4 +43,5 @@ for qty, id, desc in records:
 
 document.add_page_break()
 
-document.save("output/demo.docx")
+# Save the document to a .docx file
+delete_and_save_docx(file_path, document)

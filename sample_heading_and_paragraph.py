@@ -1,5 +1,10 @@
 from docx import Document
 
+from utils import delete_and_save_docx
+
+# Specify the file path for the .docx file
+file_path = "output/HeadingAndParagraph.docx"
+
 # Create a new Document
 doc = Document()
 
@@ -12,4 +17,4 @@ p = doc.add_paragraph(
 )
 
 # Save the document to a .docx file
-doc.save("output/HeadingAndParagraph.docx")
+delete_and_save_docx(file_path, doc)

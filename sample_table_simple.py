@@ -20,13 +20,14 @@ doc = Document()
 # Add a title to the document
 doc.add_heading("The Official Table Example!", 0)
 
+# Create a list of records
 records = (
     ("Skill 00", "Skill 01"),
     ("Skill 10", "Skill 11"),
     ("Skill 20", "Skill 21"),
 )
 
-# Add a table to the document
+# Add a table, which contains the records, to the document
 table = doc.add_table(rows=1, cols=2)
 for skill0, skill1 in records:
     row_cells = table.add_row().cells
