@@ -4,7 +4,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from utils import delete_and_save_docx, create_docx_if_not_exists
 
 # Specify the file path for the .docx file
-file_path = "samples/output/TableAlign.docx"
+file_path = "samples/output/TableAlignLeft.docx"
 
 # Create a new Document
 doc = Document()
@@ -16,9 +16,9 @@ doc.add_heading("Table Alignment", 0)
 table = doc.add_table(rows=1, cols=3)
 
 # Set the text for each cell
-table.cell(0, 0).text = "Left\n\nLine 2"
-table.cell(0, 1).text = "Center\n\nLine 2"
-table.cell(0, 2).text = "Right\n\nLine 2"
+table.cell(0, 0).text = "Left"
+table.cell(0, 1).text = "Middle"
+table.cell(0, 2).text = "Right"
 
 # Add a pragraph and align left cell to the left
 left_cell_paragraph = table.cell(0, 0).paragraphs[0]
@@ -26,11 +26,11 @@ left_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 # Add a pragraph and align center cell to the center
 center_cell_paragraph = table.cell(0, 1).paragraphs[0]
-center_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+center_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 # Add a pragraph and align right cell to the right
 right_cell_paragraph = table.cell(0, 2).paragraphs[0]
-right_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+right_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 # Create the .docx file if it does not exist
 create_docx_if_not_exists(file_path, doc)
