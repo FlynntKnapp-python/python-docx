@@ -1,6 +1,6 @@
 from docx import Document
 
-from utils import create_docx_if_not_exists, delete_and_save_docx
+from utils import create_docx_if_not_exists, delete_and_or_save_docx
 
 # Specify the file path for the .docx file
 file_path = "samples/output/HeadingAndParagraph.docx"
@@ -18,8 +18,5 @@ p = doc.add_paragraph(
 )
 print("Added p.text: \n", p.text)
 
-# Create the .docx file if it does not exist
-create_docx_if_not_exists(file_path, doc)
-
 # Save the document to a .docx file
-delete_and_save_docx(file_path, doc)
+delete_and_or_save_docx(file_path, doc)

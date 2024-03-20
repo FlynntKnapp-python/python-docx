@@ -1,7 +1,8 @@
 from docx import Document
 from docx.shared import Inches
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
-from utils import delete_and_save_docx, create_docx_if_not_exists
+from utils import delete_and_or_save_docx, create_docx_if_not_exists
 
 # Specify the file path for the .docx file
 file_path = "samples/output/Demo.docx"
@@ -30,11 +31,13 @@ records = (
     (4, "631", "Spam, spam, eggs, and spam"),
 )
 
+# Create a 1-row, 3-column table for the header labels:
 table = document.add_table(rows=1, cols=3)
 hdr_cells = table.rows[0].cells
 hdr_cells[0].text = "Qty"
 hdr_cells[1].text = "Id"
 hdr_cells[2].text = "Desc"
+# Add the records to the table:
 for qty, id, desc in records:
     row_cells = table.add_row().cells
     row_cells[0].text = str(qty)
@@ -43,8 +46,17 @@ for qty, id, desc in records:
 
 document.add_page_break()
 
-# Create the .docx file if it does not exist
-create_docx_if_not_exists(file_path, document)
+# Add header `Second Page` to the second page:
+document.add_heading("Second Page", level=0)
+
+# Add another page break:
+document.add_page_break()
+
+# Add `This page left intentionally blank.` to the third page:
+third_page_lone_paragraph = document.add_paragraph(
+    "This page left intentionally blank."
+)
+third_page_lone_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 # Save the document to a .docx file
-delete_and_save_docx(file_path, document)
+delete_and_or_save_docx(file_path, document)

@@ -71,7 +71,7 @@ def create_docx_if_not_exists(path: str, document: Any):
         print(f"The file {path} already exists.")
 
 
-def delete_and_save_docx(path: str, document: Document):
+def delete_and_or_save_docx(path: str, document: Document):
     """
     Delete the file if it exists and save the document to a .docx file.
 
@@ -89,10 +89,11 @@ def delete_and_save_docx(path: str, document: Document):
         try:
             os.remove(path)
             print(f"File {path} deleted.")
-            print(f"Saving the document to {path}...")
-            document.save(path)
-            print(f"Document saved to {path}.")
         except PermissionError:
             print(f"PermissionError: Unable to delete {path}.")
     else:
         print("The file does not exist.")
+    # Save the document to the specified path
+    print(f"Saving the document to {path}...")
+    document.save(path)
+    print(f"Document saved to {path}.")

@@ -1,7 +1,7 @@
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
-from utils import delete_and_save_docx, create_docx_if_not_exists
+from utils import delete_and_or_save_docx, create_docx_if_not_exists
 
 # Specify the file path for the .docx file
 file_path = "samples/output/ParagraphAlign.docx"
@@ -20,9 +20,5 @@ paragraph_right = doc.add_paragraph("This paragraph is right-aligned.")
 paragraph_left.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 paragraph_right.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 
-# Create the .docx file if it does not exist
-create_docx_if_not_exists(file_path, doc)
-
-
 # Save the document to a .docx file
-delete_and_save_docx(file_path, doc)
+delete_and_or_save_docx(file_path, doc)
