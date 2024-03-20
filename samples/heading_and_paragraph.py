@@ -9,12 +9,14 @@ file_path = "samples/output/HeadingAndParagraph.docx"
 doc = Document()
 
 # Add a title to the document
-doc.add_heading("Document Title", 0)
+h = doc.add_heading("Document Title", 0)
+print("Added h.text: \n", h.text)
 
 # Add a paragraph of text
 p = doc.add_paragraph(
     "This is a simple paragraph that is being added to the document. "
 )
+print("Added p.text: \n", p.text)
 
 # Create the .docx file if it does not exist
 create_docx_if_not_exists(file_path, doc)

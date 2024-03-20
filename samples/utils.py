@@ -24,6 +24,34 @@ def load_docx_if_exists(path: str) -> Document:
         return Document()
 
 
+# Function to create a table by number of columns:
+def add_document_table_by_cols(doc: Document, items: list, cols=None) -> Document:
+    """
+    Create a table in a Word document with a specified number of columns.
+
+    Args:
+    - doc (Document): The docx.Document object to which the table will be added.
+    - items (list): The list of items to be added to the table.
+    - cols (int): The number of columns in the table.
+
+    Returns:
+    - Document: The docx.Document object with the table added.
+    """
+    if len(items) % cols != 0:
+        rows = len(items) // cols + 1
+    else:
+        rows = len(items) // cols
+
+    # Create a 1-row, 3-column table
+    table = doc.add_table(rows=rows, cols=cols)
+
+    # Set the text for each cell
+    for i in range(len(items)):
+        table.cell(0, i).text = items[i]
+
+    return doc
+
+
 def create_docx_if_not_exists(path: str, document: Any):
     """
     Create a .docx file if it does not exist.
