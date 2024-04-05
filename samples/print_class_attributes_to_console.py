@@ -1,4 +1,4 @@
-# samples\print_instance_attributes_to_console.py
+# samples\print_class_attributes_to_console.py
 
 from docx import Document
 
