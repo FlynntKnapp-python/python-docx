@@ -97,3 +97,46 @@ def delete_and_or_save_docx(path: str, document: Document):
     print(f"Saving the document to {path}...")
     document.save(path)
     print(f"Document saved to {path}.")
+
+
+def return_object_attributes(obj: Any):
+    """
+    Return the attributes of an object.
+
+    Parameters:
+    - obj (Any): The object for which to return attributes.
+
+    Returns:
+    - list: The list of attributes of the object.
+    """
+    return dir(obj)
+
+
+def enumerate_paragraphs(doc: Document):
+    """
+    Enumerate the paragraphs in a Word document.
+
+    Parameters:
+    - doc (Document): The docx.Document object representing the Word document.
+
+    Returns:
+    - list: The enumerated list of paragraphs in the document.
+    """
+    return [(i, paragraph.text) for i, paragraph in enumerate(doc.paragraphs)]
+
+
+def print_attributes_to_console(obj: object):
+    """
+    List the attributes of an object.
+
+    Args:
+    - obj: The object for which to list attributes.
+
+    Returns:
+    - None
+    """
+    print(f"List of {obj} Attributes:")
+    for attr in dir(obj):
+        print(f"\t{attr}")
+
+    return None
