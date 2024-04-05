@@ -1,7 +1,6 @@
 from docx import Document
-from docx.oxml.shared import OxmlElement
 from docx.oxml.ns import qn
-
+from docx.oxml.shared import OxmlElement
 
 # Specify the file path for the .docx file
 file_path = "samples/output/ClickableEmailLink.docx"

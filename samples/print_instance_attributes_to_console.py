@@ -1,15 +1,10 @@
 # samples\print_instance_attributes_to_console.py
 
 from docx import Document
-
 from utils import print_attributes_to_console
 
-# Specify the file path for the .docx file:
-file_path = "samples/output/ParaTablePara.docx"
-
-# Load the .docx file (instantiating the Document object):
-doc = Document(file_path)
-
+# Create a new (empty) Document:
+doc = Document()
 
 # List the attributes of the Document object:
 attrs = print_attributes_to_console(doc)

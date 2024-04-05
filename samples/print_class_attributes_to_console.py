@@ -1,7 +1,6 @@
 # samples\print_class_attributes_to_console.py
 
 from docx import Document
-
 from utils import print_attributes_to_console
 
 # List the attributes of the Document object:

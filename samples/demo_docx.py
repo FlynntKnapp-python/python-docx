@@ -1,8 +1,7 @@
 from docx import Document
-from docx.shared import Inches
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-
-from utils import delete_and_or_save_docx, create_docx_if_not_exists
+from docx.shared import Inches
+from utils import create_docx_if_not_exists, delete_and_or_save_docx
 
 # Specify the file path for the .docx file
 file_path = "samples/output/Demo.docx"

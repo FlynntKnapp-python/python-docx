@@ -1,10 +1,6 @@
 from docx import Document
-
-from utils import (
-    load_docx_if_exists,
-    create_docx_if_not_exists,
-    delete_and_or_save_docx,
-)
+from utils import (create_docx_if_not_exists, delete_and_or_save_docx,
+                   load_docx_if_exists)
 
 file_path = "samples/output/Edit.docx"
 

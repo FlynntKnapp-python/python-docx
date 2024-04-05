@@ -114,7 +114,7 @@ def return_object_attributes(obj: Any):
 
 def enumerate_paragraphs(doc: Document):
     """
-    Enumerate the paragraphs in a Word document.
+    Returns an enumerated list of paragraphs in a Word document.
 
     Parameters:
     - doc (Document): The docx.Document object representing the Word document.
@@ -127,7 +127,7 @@ def enumerate_paragraphs(doc: Document):
 
 def print_attributes_to_console(obj: object):
     """
-    List the attributes of an object.
+    Print the attributes of an object to the console.
 
     Args:
     - obj: The object for which to list attributes.

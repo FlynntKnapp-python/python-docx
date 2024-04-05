@@ -20,15 +20,3 @@ print(f"Number of Paragraphs: {num_paragraphs}")
 # Print the text of each paragraph in the document:
 for i, paragraph in enumerate(doc.paragraphs):
     print(f"Paragraph {i}: {paragraph.text}")
-
-list_result = enumerate_paragraphs(doc)
-print("list_result: ", list_result)
-print("type(list_result): ", type(list_result))
-print("type(list_result[0]): ", type(list_result[0]))
-
-
-for item in list_result:
-    print(item)
-
-for item in list_result:
-    print(item[0], item[1])

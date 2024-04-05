@@ -1,12 +1,8 @@
 # samples\para_table_para.py
 
 from docx import Document
-
-from utils import (
-    delete_and_or_save_docx,
-    create_docx_if_not_exists,
-    add_document_table_by_cols,
-)
+from utils import (add_document_table_by_cols, create_docx_if_not_exists,
+                   delete_and_or_save_docx)
 
 # Specify the file path for the .docx file
 file_path = "samples/output/ParaTablePara.docx"

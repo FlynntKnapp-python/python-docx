@@ -1,5 +1,4 @@
 from docx import Document
-
 from utils import create_docx_if_not_exists, delete_and_or_save_docx
 
 # Specify the file path for the .docx file
