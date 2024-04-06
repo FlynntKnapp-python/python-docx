@@ -1,11 +1,11 @@
 from docx import Document
 from utils import (create_docx_if_not_exists, delete_and_or_save_docx,
-                   load_docx_if_exists)
+                   load_or_create_docx)
 
 file_path = "samples/output/Edit.docx"
 
 # Load the document from a .docx file
-doc = load_docx_if_exists(file_path)
+doc = load_or_create_docx(file_path)
 
 if len(doc.paragraphs) == 0:
     print("The document does not contain any paragraphs.")

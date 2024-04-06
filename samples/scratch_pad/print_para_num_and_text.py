@@ -1,7 +1,6 @@
 # samples\print_para_num_and_text.py
 
 from docx import Document
-
 # Use `enumerate_paragraphs` to print the number and text of each paragraph in the document:
 from utils import enumerate_paragraphs
 
