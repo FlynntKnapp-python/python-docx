@@ -77,11 +77,16 @@ def save_docx(path: str, document: Document):
     - document (Document): The docx.Document object to be saved.
 
     Returns:
-    - None
+    - bool: True if the document was saved successfully, False otherwise.
     """
-    print(f"Saving the document to {path}...")
-    document.save(path)
-    print(f"Document saved to {path}.")
+    try:
+        print(f"Saving the document to {path}...")
+        document.save(path)
+        print(f"Document saved to {path}.")
+        return True
+    except Exception as e:
+        print(f"Error saving the document: {e}")
+        return False
 
 
 def enumerate_paragraphs(doc: Document) -> list:

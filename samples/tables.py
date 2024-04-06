@@ -1,12 +1,11 @@
 from docx import Document
-from utils import (add_document_table_by_cols, create_docx_if_not_exists,
-                   delete_and_or_save_docx)
+import utils
 
-# Specify the file path for the .docx file
+# Specify the file path for the .docx file:
 file_path = "samples/output/Tables.docx"
 
-# Create a new Document
-doc_00 = Document()
+# Create a new empty Document:
+doc = Document()
 
 items = [
     "Grits",
@@ -23,8 +22,8 @@ items = [
 ]
 
 
-# Add a Table to the Document
-doc_01 = add_document_table_by_cols(doc_00, items, cols=4)
+# Add a Table to the Document:
+doc = utils.add_table(doc, items, cols=4)
 
-# Delete the file if it exists and save the document to a .docx file
-delete_and_or_save_docx(file_path, doc_01)
+# Save the Document:
+saved = utils.save_docx(file_path, doc)
