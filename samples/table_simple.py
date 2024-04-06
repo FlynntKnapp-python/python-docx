@@ -1,23 +1,25 @@
-from docx import Document
-from utils import create_docx_if_not_exists, delete_and_or_save_docx
+# samples\table_simple.py
 
-# Specify the file path for the .docx file
+from docx import Document
+import utils
+
+# Specify the file path for the .docx file:
 file_path = "samples/output/TableSimple.docx"
 
-# Create a new Document
+# Create a new Document:
 doc = Document()
 
-# Add a title to the document
+# Add a title to the document:
 doc.add_heading("The Official Table Example!", 0)
 
-# Create a list of records
+# Create a list of records:
 records = (
     ("Skill 00", "Skill 10", "Skill 20"),
     ("Skill 01", "Skill 11", "Skill 21"),
     ("Skill 02", "Skill 12", "Skill 22"),
 )
 
-# Add a table, which contains the records, to the document
+# Add a table, which contains the records, to the document:
 table = doc.add_table(rows=1, cols=3)
 for col0, col1, col2 in records:
     row_cells = table.add_row().cells
@@ -26,5 +28,5 @@ for col0, col1, col2 in records:
     row_cells[2].text = col2
 
 
-# Save the document to a .docx file
-delete_and_or_save_docx(file_path, doc)
+# Save the document to a .docx file:
+saved = utils.save_docx(file_path, doc)
