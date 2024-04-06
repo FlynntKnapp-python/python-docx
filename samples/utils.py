@@ -1,123 +1,95 @@
+# samples\utils.py
+
 import os
 from typing import Any
 
 from docx import Document
 
 
-def load_docx_if_exists(path: str) -> Document:
+def manage_docx_file(
+    path: str, action: str = "load_or_create", document: Document = None
+) -> Document:
     """
-    Load a .docx file if it exists.
+    Manage a .docx file (load, create, or delete and recreate).
 
     Parameters:
     - path (str): The file system path where the .docx file is saved.
+    - action (str): Action to perform on the file: 'load_or_create', 'delete_and_create', or 'delete_and_save'.
+    - document (Document): The docx.Document object. Required for 'delete_and_save' action.
 
     Returns:
-    - Document: The docx.Document object representing the .docx file.
+    - Document: For 'load_or_create' and 'delete_and_create' actions, returns the Document object.
     """
-    if os.path.exists(path):
-        print(f"Loading {path}...")
-        document = Document(path)
-        print(f"Document loaded from {path}.")
-        return document
-    else:
-        print(f"The file {path} does not exist.")
+    file_exists = os.path.exists(path)
+
+    if action == "load_or_create":
+        if file_exists:
+            print(f"Loading {path}...")
+            return Document(path)
+        else:
+            print(f"The file {path} does not exist. Creating a new one...")
+            return Document()
+
+    if action == "delete_and_create":
+        if file_exists:
+            print(f"Deleting {path}...")
+            os.remove(path)
+        print(f"Creating {path}...")
         return Document()
 
+    if action == "delete_and_save":
+        if file_exists:
+            print(f"Deleting {path}...")
+            os.remove(path)
+        if document:
+            document.save(path)
+            print(f"Document saved to {path}.")
 
-# Function to create a table by number of columns:
-def add_document_table_by_cols(doc: Document, items: list, cols=None) -> Document:
+
+def add_table(doc: Document, items: list, cols: int) -> Document:
     """
-    Create a table in a Word document with a specified number of columns.
+    Create and populate a table in the document.
 
-    Args:
-    - doc (Document): The docx.Document object to which the table will be added.
-    - items (list): The list of items to be added to the table.
-    - cols (int): The number of columns in the table.
+    Parameters:
+    - doc (Document): The Document object to add the table to.
+    - items (list): List of items to populate the table.
+    - cols (int): Number of columns in the table.
 
     Returns:
-    - Document: The docx.Document object with the table added.
+    - Document: The modified Document object.
     """
-    if len(items) % cols != 0:
-        rows = len(items) // cols + 1
-    else:
-        rows = len(items) // cols
-
-    # Create a 1-row, 3-column table
+    rows = (len(items) + cols - 1) // cols  # Calculate rows needed
     table = doc.add_table(rows=rows, cols=cols)
 
-    # Set the text for each cell
-    for i in range(len(items)):
-        table.cell(0, i).text = items[i]
+    for i, item in enumerate(items):
+        row, col = divmod(i, cols)
+        table.cell(row, col).text = str(item)
 
     return doc
 
 
-def create_docx_if_not_exists(path: str, document: Any):
+def save_docx(path: str, document: Document):
     """
-    Create a .docx file if it does not exist.
+    Save a document to a .docx file.
 
     Parameters:
-    - path (str): The file system path where the .docx file is saved. If the file exists, it will not be created.
-    - document (Any): The object to be saved. This object represents a Word document.
+    - path (str): The file system path where the .docx file is saved.
+    - document (Document): The docx.Document object to be saved.
 
     Returns:
     - None
     """
-    if not os.path.exists(path):
-        print(f"Creating {path}...")
-        document.save(path)
-        print(f"Document created at {path}.")
-    else:
-        print(f"The file {path} already exists.")
-
-
-def delete_and_or_save_docx(path: str, document: Document):
-    """
-    Delete the file if it exists and save the document to a .docx file.
-
-    Parameters:
-    - path (str): The file system path where the .docx file is saved. If the file exists, it will be deleted before saving.
-    - document (Document): The docx.Document object to be saved. This object represents a Word document.
-
-    Returns:
-    - None
-    """
-    # Check if the file exists to avoid FileNotFoundError
-    if os.path.exists(path):
-        # Delete the file
-        print(f"Deleting {path}...")
-        try:
-            os.remove(path)
-            print(f"File {path} deleted.")
-        except PermissionError:
-            print(f"PermissionError: Unable to delete {path}.")
-    else:
-        print("The file does not exist.")
-    # Save the document to the specified path
     print(f"Saving the document to {path}...")
     document.save(path)
     print(f"Document saved to {path}.")
 
 
-def return_object_attributes(obj: Any):
-    """
-    Return the attributes of an object.
-
-    Parameters:
-    - obj (Any): The object for which to return attributes.
-
-    Returns:
-    - list: The list of attributes of the object.
-    """
-    return dir(obj)
-
-
-def enumerate_paragraphs(doc: Document):
+def enumerate_paragraphs(doc: Document) -> list:
     """
     Returns an enumerated list of paragraphs in a Word document.
 
     Parameters:
-    - doc (Document): The docx.Document object representing the Word document.
+    - doc (Document): The Document object.
 
     Returns:
     - list: The enumerated list of paragraphs in the document.
@@ -125,17 +97,17 @@ def enumerate_paragraphs(doc: Document):
     return [(i, paragraph.text) for i, paragraph in enumerate(doc.paragraphs)]
 
 
-def print_attributes_to_console(obj: object):
+def print_attributes(obj: Any):
     """
     Print the attributes of an object to the console.
 
-    Args:
+    Parameters:
     - obj: The object for which to list attributes.
 
     Returns:
     - None
     """
-    print(f"List of {obj} Attributes:")
+    print(f"List of {type(obj).__name__} attributes:")
     for attr in dir(obj):
         print(f"\t{attr}")
 
