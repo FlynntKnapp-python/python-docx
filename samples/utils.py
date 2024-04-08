@@ -117,3 +117,129 @@ def print_attributes(obj: Any):
         print(f"\t{attr}")
 
     return None
+
+
+def list_paragraphs(doc: Document):
+    """
+    Print the paragraphs of a Word document to the console.
+
+    Parameters:
+    - doc (Document): The Document object.
+
+    Returns:
+    - None
+    """
+    if len(doc.paragraphs) == 0:
+        print("The document does not contain any root paragraphs.")
+    else:
+        print(f"The document contains {len(doc.paragraphs)} root paragraphs.")
+        for i, paragraph in enumerate(doc.paragraphs):
+            print(f"\nParagraph ({i}):")
+            print(paragraph.text)
+
+    return None
+
+
+def list_tables(doc: Document):
+    """
+    Print the tables of a Word document to the console.
+
+    Parameters:
+    - doc (Document): The Document object.
+
+    Returns:
+    - None
+    """
+    if len(doc.tables) == 0:
+        print("The document does not contain any tables.")
+    else:
+        print(f"The document contains {len(doc.tables)} tables.")
+        for i, table in enumerate(doc.tables):
+            print(f"\nTable ({i}):")
+            for row in table.rows:
+                for cell in row.cells:
+                    print(cell.text)
+
+    return None
+
+
+def list_sections(doc: Document):
+    """
+    Print the sections of a Word document to the console.
+
+    Parameters:
+    - doc (Document): The Document object.
+
+    Returns:
+    - None
+    """
+    if len(doc.sections) == 0:
+        print("The document does not contain any sections.")
+    else:
+        print(f"The document contains {len(doc.sections)} sections.")
+        # print(dir(doc.sections))
+        for i, section in enumerate(doc.sections):
+            print(f"\nSection ({i}):")
+            print(f"Section start: {section.start_type}")
+
+    return None
+
+
+def list_runs(doc: Document):
+    """
+    Print the runs of a Word document to the console.
+
+    Parameters:
+    - doc (Document): The Document object.
+
+    Returns:
+    - None
+    """
+    if len(doc.paragraphs) == 0:
+        print("The document does not contain any paragraphs.")
+    else:
+        print(f"The document contains {len(doc.paragraphs)} paragraphs.")
+        for i, paragraph in enumerate(doc.paragraphs):
+            print(f"\nParagraph ({i}):")
+            for j, run in enumerate(paragraph.runs):
+                print(f"\tRun ({j}):")
+                print(f"\tText: {run.text}")
+                print(f"\tBold: {run.bold}")
+                print(f"\tItalic: {run.italic}")
+                print(f"\tUnderline: {run.underline}")
+                print(f"\tFont Name: {run.font.name}")
+                print(f"\tFont Size: {run.font.size}")
+                print(f"\tFont Color: {run.font.color.rgb}")
+                print(f"\tFont Bold: {run.font.bold}")
+                print(f"\tFont Italic: {run.font.italic}")
+                print(f"\tFont Underline: {run.font.underline}")
+                print(f"\tFont Strike: {run.font.strike}")
+                print(f"\tFont Subscript: {run.font.subscript}")
+                print(f"\tFont Superscript: {run.font.superscript}")
+                print(f"\tFont All Caps: {run.font.all_caps}")
+                print(f"\tFont Hidden: {run.font.hidden}")
+                print(f"\tFont Highlight Color: {run.font.highlight_color}")
+                print(f"\tFont Shadow: {run.font.shadow}")
+                print(f"\tFont Size: {run.font.size}")
+
+    return None
+
+
+def list_styles(doc: Document):
+    """
+    Print the styles of a Word document to the console.
+
+    Parameters:
+    - doc (Document): The Document object.
+
+    Returns:
+    - None
+    """
+    if len(doc.styles) == 0:
+        print("The document does not contain any styles.")
+    else:
+        print(f"The document contains {len(doc.styles)} styles:")
+        for style in doc.styles:
+            print(style.name)
+
+    return None
