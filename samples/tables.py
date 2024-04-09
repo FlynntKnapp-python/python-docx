@@ -23,7 +23,7 @@ items = [
 
 
 # Add a Table to the Document:
-doc = utils.add_table(doc, items, cols=4)
+doc = utils.add_table(doc, items, cols=3)
 
 # Save the Document:
 saved = utils.save_docx(file_path, doc)

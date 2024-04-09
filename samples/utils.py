@@ -102,7 +102,7 @@ def enumerate_paragraphs(doc: Document) -> list:
     return [(i, paragraph.text) for i, paragraph in enumerate(doc.paragraphs)]
 
 
-def print_attributes(obj: Any):
+def print_attributes(obj: Any) -> None:
     """
     Print the attributes of an object to the console.
 
@@ -119,7 +119,7 @@ def print_attributes(obj: Any):
     return None
 
 
-def list_paragraphs(doc: Document):
+def list_paragraphs(doc: Document) -> None:
     """
     Print the paragraphs of a Word document to the console.
 
@@ -140,7 +140,7 @@ def list_paragraphs(doc: Document):
     return None
 
 
-def list_tables(doc: Document):
+def list_tables(doc: Document) -> None:
     """
     Print the tables of a Word document to the console.
 
@@ -163,7 +163,7 @@ def list_tables(doc: Document):
     return None
 
 
-def list_sections(doc: Document):
+def list_sections(doc: Document) -> None:
     """
     Print the sections of a Word document to the console.
 
@@ -185,7 +185,7 @@ def list_sections(doc: Document):
     return None
 
 
-def list_runs(doc: Document):
+def list_runs(doc: Document) -> None:
     """
     Print the runs of a Word document to the console.
 
@@ -225,7 +225,7 @@ def list_runs(doc: Document):
     return None
 
 
-def list_styles(doc: Document):
+def list_styles(doc: Document) -> None:
     """
     Print the styles of a Word document to the console.
 
