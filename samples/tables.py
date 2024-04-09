@@ -1,5 +1,7 @@
+# samples\tables.py
+
+from base import docx_builder
 from docx import Document
-import utils
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/Tables.docx"
@@ -23,7 +25,7 @@ items = [
 
 
 # Add a Table to the Document:
-doc = utils.add_table(doc, items, cols=3)
+doc = docx_builder.add_table(doc, items, cols=3)
 
 # Save the Document:
-saved = utils.save_docx(file_path, doc)
+saved = docx_builder.save_docx(file_path, doc)

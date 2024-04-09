@@ -1,10 +1,10 @@
 # samples\print_class_attributes_to_console.py
 
+from base import docx_builder
 from docx import Document
-import utils
 
 # List the attributes of the Document object:
-attrs = utils.print_attributes(Document)
+attrs = docx_builder.print_attributes(Document)
 
 # Output:
 """powershell

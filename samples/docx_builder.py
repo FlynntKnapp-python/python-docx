@@ -4,8 +4,8 @@ import os
 from typing import Any
 
 from docx import Document
-from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.shared import Pt
 
 
 def manage_docx_file(
@@ -16,11 +16,14 @@ def manage_docx_file(
 
     Parameters:
     - path (str): The file system path where the .docx file is saved.
-    - action (str): Action to perform on the file: 'load_or_create', 'delete_and_create', or 'delete_and_save'.
-    - document (Document): The docx.Document object. Required for 'delete_and_save' action.
+    - action (str): Action to perform on the file: 'load_or_create', 'delete_and_create'
+    , or 'delete_and_save'.
+    - document (Document): The docx.Document object. Required for 'delete_and_save'
+    action.
 
     Returns:
-    - Document: For 'load_or_create' and 'delete_and_create' actions, returns the Document object.
+    - Document: For 'load_or_create' and 'delete_and_create' actions, returns the
+    Document object.
     """
     file_exists = os.path.exists(path)
 

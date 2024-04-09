@@ -1,6 +1,4 @@
-from docx import Document
-from utils import (create_docx_if_not_exists, delete_and_or_save_docx,
-                   load_or_create_docx)
+from samples.docx_builder import delete_and_or_save_docx, load_or_create_docx
 
 file_path = "samples/output/Edit.docx"
 

@@ -1,6 +1,8 @@
+# samples\paragraph_align.py
+
+from base import docx_builder
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-import utils
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/ParagraphAlign.docx"
@@ -20,4 +22,4 @@ paragraph_left.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 paragraph_right.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 
 # Save the document to a .docx file:
-saved = utils.save_docx(file_path, doc)
+saved = docx_builder.save_docx(file_path, doc)

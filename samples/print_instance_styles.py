@@ -1,13 +1,13 @@
 # samples\print_instance_styles.py
 
-import utils
+from base import docx_builder
 from docx import Document
 
 # Create a new (empty) Document:
 doc = Document()
 
 # List the styles of the Document object:
-attrs = utils.list_styles(doc)
+attrs = docx_builder.list_styles(doc)
 
 # Output:
 """powershell

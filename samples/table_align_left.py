@@ -1,8 +1,8 @@
 # samples\table_align_left.py
 
+from base import docx_builder
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-import utils
 
 # Specify the file path for the .docx file
 file_path = "samples/output/TableAlignLeft.docx"
@@ -34,4 +34,4 @@ right_cell_paragraph = table.cell(0, 2).paragraphs[0]
 right_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 # Save the document to a .docx file:
-saved = utils.save_docx(file_path, doc)
+saved = docx_builder.save_docx(file_path, doc)

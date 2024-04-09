@@ -1,7 +1,9 @@
+# samples\demo_docx.py
+
+from base import docx_builder
 from docx import Document
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT, WD_COLOR_INDEX
-from docx.shared import Inches, RGBColor, Pt
-import utils
+from docx.enum.text import WD_COLOR_INDEX, WD_PARAGRAPH_ALIGNMENT
+from docx.shared import Inches, Pt, RGBColor
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/Demo.docx"
@@ -160,7 +162,7 @@ third_page_lone_paragraph = document.add_paragraph(
 third_page_lone_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 # Save the document to a .docx file
-saved = utils.save_docx(file_path, document)
+saved = docx_builder.save_docx(file_path, document)
 
 # utils.list_paragraphs(document)
 # utils.list_tables(document)

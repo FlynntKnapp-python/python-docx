@@ -1,13 +1,13 @@
 # samples\print_instance_attributes_to_console.py
 
-import utils
+from base import docx_builder
 from docx import Document
 
 # Create a new (empty) Document:
 doc = Document()
 
 # List the attributes of the Document object:
-attrs = utils.print_attributes(doc)
+attrs = docx_builder.print_attributes(doc)
 
 # Output:
 """powershell

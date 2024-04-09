@@ -1,7 +1,7 @@
 # samples\para_table_para.py
 
+from base import docx_builder
 from docx import Document
-import utils
 
 # Specify the file path for the .docx file
 file_path = "samples/output/ParaTablePara.docx"
@@ -52,7 +52,7 @@ p1 = doc.add_paragraph(paragraph_text_01)
 add_empty_paragraph(doc)
 
 # Add a Table to the Document:
-doc = utils.add_table(doc, items, cols=4)
+doc = docx_builder.add_table(doc, items, cols=4)
 
 # Add an empty paragraph:
 doc = add_empty_paragraph(doc)
@@ -61,7 +61,7 @@ doc = add_empty_paragraph(doc)
 p2 = doc.add_paragraph(paragraph_text_02)
 
 # Delete the file if it exists and save the document to a .docx file:
-saved = utils.save_docx(file_path, doc)
+saved = docx_builder.save_docx(file_path, doc)
 
 # Print the number of paragraphs in the document:
 print(f"Number of paragraphs in the document: {len(doc.paragraphs)}")

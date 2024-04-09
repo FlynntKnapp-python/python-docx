@@ -1,8 +1,10 @@
 # samples\print_enumerated_paragraphs.py
 
 from docx import Document
-# Use `enumerate_paragraphs` to print the number and text of each paragraph in the document:
-from utils import enumerate_paragraphs
+
+# Use `enumerate_paragraphs` to print the number and text of each paragraph in the
+# document:
+from samples.docx_builder import enumerate_paragraphs
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/ParaTablePara.docx"

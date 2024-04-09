@@ -1,5 +1,7 @@
+# samples\heading_and_paragraph.py
+
+from base import docx_builder
 from docx import Document
-import utils
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/HeadingAndParagraph.docx"
@@ -18,4 +20,4 @@ p = doc.add_paragraph(
 print("Added p.text: \n", p.text)
 
 # Save the document to a .docx file:
-saved = utils.save_docx(file_path, doc)
+saved = docx_builder.save_docx(file_path, doc)

@@ -1,7 +1,7 @@
 # samples\table_simple.py
 
+from base import docx_builder
 from docx import Document
-import utils
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/TableSimple.docx"
@@ -29,4 +29,4 @@ for col0, col1, col2 in records:
 
 
 # Save the document to a .docx file:
-saved = utils.save_docx(file_path, doc)
+saved = docx_builder.save_docx(file_path, doc)

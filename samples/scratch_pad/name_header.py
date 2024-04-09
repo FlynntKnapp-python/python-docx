@@ -1,14 +1,12 @@
 # samples\name_header.py
 
-import utils
-from docx import Document
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from base import docx_builder
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/Name-Header.docx"
 
 # Load the .docx file (instantiating the Document object):
-doc = utils.load_or_create_docx(file_path)
+doc = docx_builder.load_or_create_docx(file_path)
 
 # Assign a value to the `name` variable:
 name = "Flynnt Knapp"

@@ -1,13 +1,12 @@
 # samples\analyze_docx.py
 
-import utils
-from docx import Document
+from base import docx_builder
 
 # Specify the file path for the .docx file:
-file_path = "samples\output\BruceStull-Resume.docx"
+file_path = "samples/output/BruceStull-Resume.docx"
 
 # Load the .docx file (instantiating the Document object):
-doc = utils.load_or_create_docx(file_path)
+doc = docx_builder.load_or_create_docx(file_path)
 
 # Get the paragraphs of the document:
 paragraphs = doc.paragraphs

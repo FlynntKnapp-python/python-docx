@@ -1,5 +1,7 @@
+# samples\headings.py
+
+from base import docx_builder
 from docx import Document
-import utils
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/Headings.docx"
@@ -24,4 +26,4 @@ h3 = doc.add_heading("Heading 3", level=3)
 print("Added h.text: \n", h3.text)
 
 # Save the document to a .docx file:
-saved = utils.save_docx(file_path, doc)
+saved = docx_builder.save_docx(file_path, doc)
