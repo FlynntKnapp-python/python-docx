@@ -4,6 +4,8 @@ import os
 from typing import Any
 
 from docx import Document
+from docx.shared import Pt
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
 
 def manage_docx_file(
@@ -64,6 +66,51 @@ def add_table(doc: Document, items: list, cols: int) -> Document:
     for i, item in enumerate(items):
         row, col = divmod(i, cols)
         table.cell(row, col).text = str(item)
+
+    return doc
+
+
+def add_resume_heading(doc: Document, name: str, title: str) -> Document:
+    """
+    Add a heading to a resume document.
+
+    Parameters:
+    - doc (Document): The Document object to add the heading to.
+    - name (str): The name to add to the heading.
+    - title (str): The title to add to the heading.
+
+    Returns:
+    - Document: The modified Document object.
+    """
+    name_paragraph = doc.add_paragraph()
+    name_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    name_run = name_paragraph.add_run(name)
+    name_run.font.name = "Arial"
+    name_run.font.size = Pt(36)
+    title_paragraph = doc.add_paragraph()
+    title_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    title_run = title_paragraph.add_run(title)
+    title_run.font.name = "Arial"
+    title_run.font.size = Pt(18)
+
+    return doc
+
+
+def add_resume_heading_as_table(doc: Document, name: str, title: str) -> Document:
+    """
+    Add a heading to a resume document as a table.
+
+    Parameters:
+    - doc (Document): The Document object to add the heading to.
+    - name (str): The name to add to the heading.
+    - title (str): The title to add to the heading.
+
+    Returns:
+    - Document: The modified Document object.
+    """
+    table = doc.add_table(rows=2, cols=1)
+    table.cell(0, 0).text = name
+    table.cell(1, 0).text = title
 
     return doc
 
