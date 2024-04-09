@@ -6,6 +6,7 @@ from typing import Any
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.shared import Pt
+import math
 
 
 def manage_docx_file(
@@ -114,6 +115,33 @@ def add_resume_heading_as_table(doc: Document, name: str, title: str) -> Documen
     table = doc.add_table(rows=2, cols=1)
     table.cell(0, 0).text = name
     table.cell(1, 0).text = title
+
+    return doc
+
+
+def set_margins(
+    doc: Document, top: float, bottom: float, left: float, right: float
+) -> Document:
+    """
+    Set the margins of a Word document.
+
+    Parameters:
+    - doc (Document): The Document object to set the margins for.
+    - top (int): The top margin in inches.
+    - bottom (int): The bottom margin in inches.
+    - left (int): The left margin in inches.
+    - right (int): The right margin in inches.
+
+    Returns:
+    - Document: The modified Document object.
+    """
+    conversion_factor = 914400
+
+    section = doc.sections[0]
+    section.top_margin = math.floor(top * conversion_factor)
+    section.bottom_margin = math.floor(bottom * conversion_factor)
+    section.left_margin = math.floor(left * conversion_factor)
+    section.right_margin = math.floor(right * conversion_factor)
 
     return doc
 
