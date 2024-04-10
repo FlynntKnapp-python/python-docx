@@ -6,7 +6,10 @@ from typing import Any
 
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from docx.shared import Pt
+from docx.text.paragraph import Paragraph
 
 
 def manage_docx_file(
@@ -153,6 +156,51 @@ def set_margins(
     section.left_margin = math.floor(left * conversion_factor)
     section.right_margin = math.floor(right * conversion_factor)
 
+    return doc
+
+
+def insert_horizontal_line_paragraph(
+    paragraph: Paragraph, thickness: int = 4
+) -> Paragraph:
+    """
+    Insert a horizontal line into a Word document paragraph. The paragraph is expected
+    to be an instance from a list of paragraphs obtained via `Document.paragraphs` from
+    the python-docx library.
+
+    Parameters:
+    - paragraph (Paragraph): The paragraph instance to insert the line into. This should
+                              be obtained from the list of paragraphs in a Document
+                              object (`Document.paragraphs`).
+    - thickness (int): The width of the line in points, with a default of 4 points.
+
+    Returns:
+    - Paragraph: The modified paragraph with a horizontal line added.
+    """
+    pPr = paragraph._p.get_or_add_pPr()
+    pBdr = OxmlElement("w:pBdr")
+    bottom_bdr = OxmlElement("w:bottom")
+    bottom_bdr.set(qn("w:val"), "single")
+    bottom_bdr.set(qn("w:sz"), str(thickness))  # Size of the border, e.g., 4pt
+    bottom_bdr.set(qn("w:space"), "1")
+    bottom_bdr.set(qn("w:color"), "auto")
+    pBdr.append(bottom_bdr)
+    pPr.append(pBdr)
+    return paragraph
+
+
+def insert_horizontal_line(doc: Document, thickness: int = 4) -> Document:
+    """
+    Insert a horizontal line into a Word document. This will create an empty paragraph with a bottom border.
+
+    Parameters:
+    - doc (Document): The Document object to insert the line into.
+    - thickness (int): The width of the line in points.
+
+    Returns:
+    - Document: The modified Document object.
+    """
+    paragraph = doc.add_paragraph()
+    paragraph = insert_horizontal_line_paragraph(paragraph, thickness)
     return doc
 
 
