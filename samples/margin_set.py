@@ -1,4 +1,4 @@
-import math
+# samples\margin_set.py
 
 from base import docx_builder
 from docx import Document
@@ -40,5 +40,5 @@ print("Left Margin:", section.left_margin)
 print("Right Margin:", section.right_margin)
 
 # Save the document to a .docx file:
-doc.save(file_path)
-print("Document saved with specified margins.")
+saved = docx_builder.save_docx(file_path, doc)
+print("Saved: ", saved)

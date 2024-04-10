@@ -1,4 +1,4 @@
-# samples\print_sections.py
+# samples\margin_adjust.py
 
 from base import docx_builder
 from docx import Document
@@ -14,12 +14,12 @@ doc = docx_builder.add_resume_heading(doc, "Flynnt Knapp", "Django Developer")
 
 section = doc.sections[0]
 
-# Set the margins (1 inch = 1440 Twips)
-inch = 1440
-section.top_margin = 2 * inch
-section.bottom_margin = 2 * inch
-section.left_margin = 2 * inch
-section.right_margin = 2 * inch
+# Set the margins (1 inch = 914400 Units)
+inch = 914400
+section.top_margin = 1 * inch
+section.bottom_margin = 1 * inch
+section.left_margin = 1 * inch
+section.right_margin = 1 * inch
 
 print("Top Margin:", section.top_margin)
 print("Bottom Margin:", section.bottom_margin)
