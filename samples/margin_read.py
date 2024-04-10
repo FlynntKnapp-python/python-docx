@@ -1,11 +1,11 @@
 # samples\resume_heading.py
 
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from base import docx_builder
 from docx import Document
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
 # Specify the file path for the .docx file:
-file_path = "samples/output/MarginRead.docx"
+file_path = "samples/output/BruceStull-Simple.docx"
 
 # Load the Document:
 doc = docx_builder.manage_docx_file(file_path, "load_or_create")

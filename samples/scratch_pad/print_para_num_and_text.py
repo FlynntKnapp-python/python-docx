@@ -2,7 +2,6 @@
 
 from docx import Document
 
-
 # Specify the file path for the .docx file:
 file_path = "samples/output/ParaTablePara.docx"
 

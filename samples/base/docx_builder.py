@@ -1,12 +1,12 @@
 # samples\base\docx_builder.py
 
+import math
 import os
 from typing import Any
 
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.shared import Pt
-import math
 
 
 def manage_docx_file(
@@ -134,6 +134,12 @@ def set_margins(
 
     Returns:
     - Document: The modified Document object.
+
+    0.5 Inches - 457200
+    0.75 Inches - 685800
+    1.0 Inches - 914400
+    1.25 Inches - 1143000
+    1.5 Inches - 1371600
     """
     conversion_factor = 914400
 
