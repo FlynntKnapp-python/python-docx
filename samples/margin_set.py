@@ -18,10 +18,20 @@ print("Bottom Margin:", section.bottom_margin)
 print("Left Margin:", section.left_margin)
 print("Right Margin:", section.right_margin)
 
+# Set margins to 0.5 inches:
 doc = docx_builder.set_margins(doc, 0.5, 0.5, 0.5, 0.5)
 
 # Get the first section of the document:
 section = doc.sections[0]
+
+# Print the updated margins:
+print("Top Margin:", section.top_margin)
+print("Bottom Margin:", section.bottom_margin)
+print("Left Margin:", section.left_margin)
+print("Right Margin:", section.right_margin)
+
+# Set margins to default (1.0) inches:
+doc = docx_builder.set_margins(doc)
 
 # Print the updated margins:
 print("Top Margin:", section.top_margin)

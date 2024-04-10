@@ -120,7 +120,11 @@ def add_resume_heading_as_table(doc: Document, name: str, title: str) -> Documen
 
 
 def set_margins(
-    doc: Document, top: float, bottom: float, left: float, right: float
+    doc: Document,
+    top: float = 1.0,
+    bottom: float = 1.0,
+    left: float = 1.0,
+    right: float = 1.0,
 ) -> Document:
     """
     Set the margins of a Word document.
