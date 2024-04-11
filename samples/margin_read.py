@@ -38,8 +38,10 @@ print(
 )
 
 """
-914400 / 1.0 = 914400 Units/Inch
-
+Conversion Factors:
+0.0625 Inches - 57150
+0.125 Inches - 114300
+0.25 Inches - 228600
 0.5 Inches - 457200
 0.75 Inches - 685800
 1.0 Inches - 914400
