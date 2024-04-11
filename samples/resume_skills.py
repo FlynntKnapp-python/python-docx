@@ -3,35 +3,29 @@
 from base import docx_builder
 from docx import Document
 
+file_path = "samples/output/ResumeSkills.docx"
 
-def add(file_path="samples/output/ResumeSkills.docx", doc: Document = None):
+# Create a new Document:
+doc = Document()
 
-    if doc is None:
-        doc = Document()
+# Specify the skills (list) to add to the document:
+skills = [
+    "Git",
+    "Scrum",
+    "Agile",
+    "Python",
+    "Django",
+    "Django REST",
+    "Docker",
+    "Linux",
+    "S3",
+    "Raspberry Pi",
+    "Raspberry Pi Pico",
+]
 
-    skills = [
-        "Git",
-        "Scrum",
-        "Agile",
-        "Python",
-        "Django",
-        "Django REST",
-        "Docker",
-        "Linux",
-        "S3",
-        "Raspberry Pi",
-        "Raspberry Pi Pico",
-    ]
+# Add a skills table:
+doc = docx_builder.add_table(doc, skills, 3)
 
-    # Add a skills table:
-    doc = docx_builder.add_table(doc, skills, 3)
-
-    # Save the document to a .docx file:
-    saved = docx_builder.save_docx(file_path, doc)
-    print("Saved: ", saved)
-
-    return doc
-
-
-if __name__ == "__main__":
-    add()
+# Save the document to a .docx file:
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
+print("Saved: ", saved)
