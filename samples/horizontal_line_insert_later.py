@@ -13,7 +13,7 @@ doc = Document()
 paragraph = doc.add_paragraph("This is the text above the horizontal line.")
 
 # Save the document:
-saved = docx_builder.save_docx(file_path, doc)
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
 print("Saved: ", saved)
 
 # Load the Document:
@@ -26,5 +26,5 @@ paragraph = doc.paragraphs[0]
 paragraph = docx_builder.insert_horizontal_line_paragraph_bottom(paragraph)
 
 # Save the document:
-saved = docx_builder.save_docx(file_path, doc)
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
 print("Saved: ", saved)
