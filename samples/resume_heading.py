@@ -4,24 +4,18 @@ from base import docx_builder
 from docx import Document
 import os
 
+file_path = "samples/output/ResumeHeading.docx"
 
-def add(file_path="samples/output/ResumeHeading.docx", doc: Document = None):
+# Create a new Document:
+doc = Document()
 
-    if doc is None:
-        doc = Document()
+# Get the name and title from the environment variables:
+name = os.getenv("NAME")
+title = os.getenv("TITLE")
 
-    name = os.getenv("NAME")
-    title = os.getenv("TITLE")
+# Add a resume heading to the document:
+doc = docx_builder.add_resume_heading(doc, name, title)
 
-    # Add a resume heading to the document:
-    doc = docx_builder.add_resume_heading(doc, name, title)
-
-    # Save the document to a .docx file:
-    saved = docx_builder.save_docx(file_path, doc)
-    print("Saved: ", saved)
-
-    return doc
-
-
-if __name__ == "__main__":
-    add()
+# Save the document to a .docx file:
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
+print("Saved: ", saved)
