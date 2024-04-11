@@ -26,4 +26,4 @@ h3 = doc.add_heading("Heading 3", level=3)
 print("Added h.text: \n", h3.text)
 
 # Save the document to a .docx file:
-saved = docx_builder.save_docx(file_path, doc)
+saved = docx_builder.manage_docx_file(file_path, doc, "save")

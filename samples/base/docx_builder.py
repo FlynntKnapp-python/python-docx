@@ -13,21 +13,23 @@ from docx.text.paragraph import Paragraph
 
 
 def manage_docx_file(
-    path: str, action: str = "load_or_create", document: Document = None
+    path: str, document: Document = None, action: str = "load_or_create"
 ) -> Document:
     """
-    Manage a .docx file (load, create, or delete and recreate).
+    Manage a .docx file (load, create, or delete and save).
 
     Parameters:
     - path (str): The file system path where the .docx file is saved.
     - action (str): Action to perform on the file: 'load_or_create',
-    'delete_and_create', or 'delete_and_save'.
-    - document (Document): The docx.Document object. Required for 'delete_and_save'
-    action.
+    'delete_and_create', or 'save'. Default is 'load_or_create'.
+    - document (Document): The docx.Document object. Required for 'delete_and_create'
+    and 'save' action.
 
     Returns:
-    - Document: For 'load_or_create' and 'delete_and_create' actions, returns the
-    Document object.
+    - Document: For 'load_or_create' and 'delete_and_create' actions, returns a
+        docx.Document object.
+    - bool: For 'save' action, returns True if the document was saved successfully,
+    False otherwise.
     """
     file_exists = os.path.exists(path)
 
@@ -46,13 +48,36 @@ def manage_docx_file(
         print(f"Creating {path}...")
         return Document()
 
-    if action == "delete_and_save":
-        if file_exists:
-            print(f"Deleting {path}...")
-            os.remove(path)
-        if document:
+    if action == "save":
+        try:
+            print(f"Saving the document to {path}...")
             document.save(path)
             print(f"Document saved to {path}.")
+            return True
+        except Exception as e:
+            print(f"Error saving the document: {e}")
+            return False
+
+
+def save_docx(path: str, document: Document):
+    """
+    Save a document to a .docx file.
+
+    Parameters:
+    - path (str): The file system path where the .docx file is saved.
+    - document (Document): The docx.Document object to be saved.
+
+    Returns:
+    - bool: True if the document was saved successfully, False otherwise.
+    """
+    try:
+        print(f"Saving the document to {path}...")
+        document.save(path)
+        print(f"Document saved to {path}.")
+        return True
+    except Exception as e:
+        print(f"Error saving the document: {e}")
+        return False
 
 
 def add_table(doc: Document, items: list, cols: int) -> Document:
@@ -324,27 +349,6 @@ def insert_horizontal_line(doc: Document, thickness: int = 1) -> Document:
     paragraph.add_run(" ").font.size = Pt(1)
     paragraph = insert_horizontal_line_paragraph_top(paragraph, thickness)
     return doc
-
-
-def save_docx(path: str, document: Document):
-    """
-    Save a document to a .docx file.
-
-    Parameters:
-    - path (str): The file system path where the .docx file is saved.
-    - document (Document): The docx.Document object to be saved.
-
-    Returns:
-    - bool: True if the document was saved successfully, False otherwise.
-    """
-    try:
-        print(f"Saving the document to {path}...")
-        document.save(path)
-        print(f"Document saved to {path}.")
-        return True
-    except Exception as e:
-        print(f"Error saving the document: {e}")
-        return False
 
 
 def enumerate_paragraphs(doc: Document) -> list:
