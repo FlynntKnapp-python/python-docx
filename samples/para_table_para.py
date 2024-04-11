@@ -60,8 +60,8 @@ doc = add_empty_paragraph(doc)
 # Add a paragraph of text:
 p2 = doc.add_paragraph(paragraph_text_02)
 
-# Delete the file if it exists and save the document to a .docx file:
-saved = docx_builder.save_docx(file_path, doc)
-
 # Print the number of paragraphs in the document:
 print(f"Number of paragraphs in the document: {len(doc.paragraphs)}")
+
+# Save the document to a .docx file:
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
