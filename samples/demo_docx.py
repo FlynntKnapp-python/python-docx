@@ -8,6 +8,7 @@ from docx.shared import Inches, Pt, RGBColor
 # Specify the file path for the .docx file:
 file_path = "samples/output/Demo.docx"
 
+# Create a new Document:
 document = Document()
 
 # The `heading` is added as a paragraph with a style of `Heading 0`:
@@ -163,9 +164,3 @@ third_page_lone_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 # Save the document to a .docx file
 saved = docx_builder.save_docx(file_path, document)
-
-# utils.list_paragraphs(document)
-# utils.list_tables(document)
-# utils.list_sections(document)
-# utils.list_runs(document)
-# utils.list_styles(document)
