@@ -28,6 +28,11 @@ zip = os.getenv("ZIP")
 
 doc = docx_builder.add_resume_address(doc, address, city, state, zip)
 
+# Add phone number to the document:
+phone = os.getenv("PHONE")
+
+doc = docx_builder.add_resume_phone(doc, phone)
+
 # Specify email address, github, and linkedin:
 email = os.getenv("EMAIL")
 github = os.getenv("GITHUB")
@@ -57,6 +62,11 @@ skills = [
     "Raspberry Pi",
     "Raspberry Pi Pico",
 ]
+
+table_title = doc.add_paragraph("Skills:")
+table_title.style = "Heading 1"
+for run in table_title.runs:
+    run.underline = True
 
 doc = docx_builder.add_table(doc, skills, 3)
 

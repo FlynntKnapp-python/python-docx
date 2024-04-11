@@ -160,6 +160,27 @@ def add_resume_address(
     return doc
 
 
+def add_resume_phone(doc: Document, phone: str) -> Document:
+    """
+    Add a phone number to a resume document.
+
+    Parameters:
+    - doc (Document): The Document object to add the phone number to.
+    - phone (str): The phone number to add to the document.
+
+    Returns:
+    - Document: The modified Document object.
+    """
+    phone_paragraph = doc.add_paragraph()
+    phone_paragraph.paragraph_format.space_after = 0
+    phone_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    phone_run = phone_paragraph.add_run(f"Phone: {phone}")
+    phone_run.font.name = "Times New Roman"
+    phone_run.font.size = Pt(12)
+
+    return doc
+
+
 def add_resume_personal_links(doc: Document, links: dict) -> Document:
     """
     Add personal links to a resume document.
@@ -173,7 +194,8 @@ def add_resume_personal_links(doc: Document, links: dict) -> Document:
     """
     for key, value in links.items():
         link_paragraph = doc.add_paragraph()
-        link_paragraph.paragraph_format.space_after = 0
+        link_paragraph.paragraph_format.space_before = 57150
+        link_paragraph.paragraph_format.space_after = 57150
         link_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         link_run = link_paragraph.add_run(f"{key}: {value}")
         link_run.font.name = "Times New Roman"
@@ -269,6 +291,7 @@ def insert_horizontal_line_paragraph_top(
     Returns:
     - Paragraph: The modified paragraph with a horizontal line added at the top.
     """
+    paragraph.paragraph_format.space_before = 114300
     pPr = paragraph._p.get_or_add_pPr()  # Get or add paragraph properties
     pBdr = OxmlElement("w:pBdr")  # Create a paragraph border element
     top_bdr = OxmlElement("w:top")  # Create a top border element
