@@ -4,14 +4,14 @@ from base import docx_builder
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
-# Specify the file path for the .docx file
+# Specify the file path for the .docx file:
 file_path = "samples/output/TableAlignLeft.docx"
 
-# Create a new Document
+# Create a new Document:
 doc = Document()
 
 # Add a title to the document:
-doc.add_heading("Table Alignment", 0)
+doc.add_heading("Table Alignment Left", 0)
 
 # Create a 1-row, 3-column table:
 table = doc.add_table(rows=1, cols=3)
@@ -34,4 +34,5 @@ right_cell_paragraph = table.cell(0, 2).paragraphs[0]
 right_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 # Save the document to a .docx file:
-saved = docx_builder.save_docx(file_path, doc)
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
+print("Saved: ", saved)
