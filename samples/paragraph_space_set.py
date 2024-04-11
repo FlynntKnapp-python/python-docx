@@ -17,7 +17,7 @@ Conversion Factors:
 # Specify the file path for the .docx file:
 file_path = "samples/output/ParagraphSpaceSet.docx"
 
-# Load the Document:
+# Delete the existing file and create a new one:
 doc = docx_builder.manage_docx_file(file_path, "delete_and_create")
 
 space_before_p1 = 0
@@ -97,5 +97,5 @@ print("Space After p5:", p5.paragraph_format.space_after)
 
 
 # Save the document to a .docx file:
-saved = docx_builder.save_docx(file_path, doc)
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
 print("Saved: ", saved)
