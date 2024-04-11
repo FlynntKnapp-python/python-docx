@@ -14,6 +14,14 @@ from docx.text.paragraph import Paragraph
 # To make this work effectively, we may need to have a way to either return a paragraph
 # or specify the paragraph to work on.
 class DocxBuilder:
+    """
+    A class to build a Word document.
+
+    Attributes:
+        file_path (str): The file path to save the document to.
+        document (Document): The Word document object.
+    """
+
     def __init__(self, file_path: str):
         self.file_path = file_path
         self.document = Document()
