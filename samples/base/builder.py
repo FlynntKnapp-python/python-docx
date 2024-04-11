@@ -28,7 +28,7 @@ class DocxBuilder:
         Save the document to the file path specified in the constructor.
 
         Returns:
-            bool: True if the document was saved successfully, False otherwise.
+
         """
         try:
             print(f"Saving the document to {self.file_path}...")
