@@ -28,4 +28,5 @@ items = [
 doc = docx_builder.add_table(doc, items, cols=3)
 
 # Save the Document:
-saved = docx_builder.save_docx(file_path, doc)
+saved = docx_builder.manage_docx_file(file_path, doc, "save")
+print("Saved: ", saved)
