@@ -2,29 +2,25 @@
 
 from base import docx_builder
 from docx import Document
+from docx.text.paragraph import Paragraph
 
-# Specify the file path for the .docx file:
-file_path = "samples/output/HorizontalLine.docx"
 
-# Create a new Document:
-doc = Document()
+def add(
+    file_path="samples/output/HorizontalLine.docx", paragraph: Paragraph = None
+) -> Document:
 
-# Add a paragraph that will contain the horizontal line:
-paragraph = doc.add_paragraph()
-paragraph.add_run("This is the text above the first line.")
+    if paragraph is None:
+        doc = Document()
 
-# Add a horizontal line:
-paragraph = docx_builder.insert_horizontal_line_paragraph(paragraph)
+    # Add a horizontal line:
+    doc = docx_builder.insert_horizontal_line(doc)
 
-# Add another paragraph after the line:
-paragraph_after = doc.add_paragraph("This is the text below the first line.")
+    # Save the document:
+    saved = docx_builder.save_docx(file_path, doc)
+    print("Saved: ", saved)
 
-# Add another horizontal line:
-doc = docx_builder.insert_horizontal_line(doc)
+    return doc
 
-# Add another paragraph after the line:
-paragraph_after = doc.add_paragraph("This is the text below the second line.")
 
-# Save the document:
-saved = docx_builder.save_docx(file_path, doc)
-print("Saved: ", saved)
+if __name__ == "__main__":
+    add()

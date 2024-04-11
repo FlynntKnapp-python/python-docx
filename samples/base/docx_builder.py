@@ -73,6 +73,9 @@ def add_table(doc: Document, items: list, cols: int) -> Document:
     for i, item in enumerate(items):
         row, col = divmod(i, cols)
         table.cell(row, col).text = str(item)
+        for paragraph in table.cell(row, col).paragraphs:
+            paragraph.paragraph_format.space_before = 0
+            paragraph.paragraph_format.space_after = 0
 
     return doc
 
@@ -157,6 +160,28 @@ def add_resume_address(
     return doc
 
 
+def add_resume_personal_links(doc: Document, links: dict) -> Document:
+    """
+    Add personal links to a resume document.
+
+    Parameters:
+    - doc (Document): The Document object to add the links to.
+    - links (dict): A dictionary of personal links to add to the document.
+
+    Returns:
+    - Document: The modified Document object.
+    """
+    for key, value in links.items():
+        link_paragraph = doc.add_paragraph()
+        link_paragraph.paragraph_format.space_after = 0
+        link_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+        link_run = link_paragraph.add_run(f"{key}: {value}")
+        link_run.font.name = "Times New Roman"
+        link_run.font.size = Pt(12)
+
+    return doc
+
+
 def set_margins(
     doc: Document,
     top: float = 1.0,
@@ -198,8 +223,8 @@ def set_margins(
     return doc
 
 
-def insert_horizontal_line_paragraph(
-    paragraph: Paragraph, thickness: int = 4
+def insert_horizontal_line_paragraph_bottom(
+    paragraph: Paragraph, thickness: int = 1
 ) -> Paragraph:
     """
     Insert a horizontal line into a Word document paragraph. The paragraph is expected
@@ -210,7 +235,7 @@ def insert_horizontal_line_paragraph(
     - paragraph (Paragraph): The paragraph instance to insert the line into. This should
                               be obtained from the list of paragraphs in a Document
                               object (`Document.paragraphs`).
-    - thickness (int): The width of the line in points, with a default of 4 points.
+    - thickness (int): The width of the line in points, with a default of 1 points.
 
     Returns:
     - Paragraph: The modified paragraph with a horizontal line added.
@@ -219,7 +244,7 @@ def insert_horizontal_line_paragraph(
     pBdr = OxmlElement("w:pBdr")
     bottom_bdr = OxmlElement("w:bottom")
     bottom_bdr.set(qn("w:val"), "single")
-    bottom_bdr.set(qn("w:sz"), str(thickness))  # Size of the border, e.g., 4pt
+    bottom_bdr.set(qn("w:sz"), str(thickness * 8))  # Size of the border, e.g., 4pt
     bottom_bdr.set(qn("w:space"), "1")
     bottom_bdr.set(qn("w:color"), "auto")
     pBdr.append(bottom_bdr)
@@ -227,7 +252,38 @@ def insert_horizontal_line_paragraph(
     return paragraph
 
 
-def insert_horizontal_line(doc: Document, thickness: int = 4) -> Document:
+def insert_horizontal_line_paragraph_top(
+    paragraph: Paragraph, thickness: int = 1
+) -> Paragraph:
+    """
+    Insert a horizontal line at the top of a Word document paragraph. The paragraph is expected
+    to be an instance from a list of paragraphs obtained via `Document.paragraphs` from
+    the python-docx library.
+
+    Parameters:
+    - paragraph (Paragraph): The paragraph instance to insert the line into. This should
+                              be obtained from the list of paragraphs in a Document
+                              object (`Document.paragraphs`).
+    - thickness (int): The width of the line in points, with a default of 1 points.
+
+    Returns:
+    - Paragraph: The modified paragraph with a horizontal line added at the top.
+    """
+    pPr = paragraph._p.get_or_add_pPr()  # Get or add paragraph properties
+    pBdr = OxmlElement("w:pBdr")  # Create a paragraph border element
+    top_bdr = OxmlElement("w:top")  # Create a top border element
+    top_bdr.set(qn("w:val"), "single")  # Border type, e.g., single line
+    top_bdr.set(
+        qn("w:sz"), str(thickness * 8)
+    )  # Size of the border, e.g., 4pt (note: Word's measurement unit is 1/8th of a point)
+    top_bdr.set(qn("w:space"), "1")  # The space between the border and the text
+    top_bdr.set(qn("w:color"), "auto")  # Border color
+    pBdr.append(top_bdr)  # Append the top border to the paragraph border
+    pPr.append(pBdr)  # Append the paragraph border to the paragraph properties
+    return paragraph
+
+
+def insert_horizontal_line(doc: Document, thickness: int = 1) -> Document:
     """
     Insert a horizontal line into a Word document. This will create an empty paragraph with a bottom border.
 
@@ -239,7 +295,11 @@ def insert_horizontal_line(doc: Document, thickness: int = 4) -> Document:
     - Document: The modified Document object.
     """
     paragraph = doc.add_paragraph()
-    paragraph = insert_horizontal_line_paragraph(paragraph, thickness)
+    # paragraph.paragraph_format.space_before = 0
+    # paragraph.paragraph_format.space_after = 0
+    # paragraph.paragraph_format.line_spacing = 0
+    paragraph.add_run(" ").font.size = Pt(1)
+    paragraph = insert_horizontal_line_paragraph_top(paragraph, thickness)
     return doc
 
 

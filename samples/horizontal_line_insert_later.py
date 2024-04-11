@@ -23,7 +23,7 @@ doc = docx_builder.manage_docx_file(file_path, "load_or_create")
 paragraph = doc.paragraphs[0]
 
 # Add a horizontal line to the paragraph:
-paragraph = docx_builder.insert_horizontal_line_paragraph(paragraph)
+paragraph = docx_builder.insert_horizontal_line_paragraph_bottom(paragraph)
 
 # Save the document:
 saved = docx_builder.save_docx(file_path, doc)
