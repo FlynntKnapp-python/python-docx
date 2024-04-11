@@ -90,15 +90,19 @@ def add_resume_heading(doc: Document, name: str, title: str) -> Document:
     - Document: The modified Document object.
     """
     name_paragraph = doc.add_paragraph()
+    name_paragraph.paragraph_format.space_after = 0
+    # Alternatively, use the following to set the space after:
+    # name_paragraph.paragraph_format.space_after = Pt(<NN>)
     name_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
     name_run = name_paragraph.add_run(name)
-    name_run.font.name = "Arial"
-    name_run.font.size = Pt(36)
+    name_run.font.name = "Times New Roman"
+    name_run.font.size = Pt(18)
+    name_run.bold = True
     title_paragraph = doc.add_paragraph()
     title_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
     title_run = title_paragraph.add_run(title)
-    title_run.font.name = "Arial"
-    title_run.font.size = Pt(18)
+    title_run.font.name = "Times New Roman"
+    title_run.font.size = Pt(12)
 
     return doc
 
@@ -142,6 +146,10 @@ def set_margins(
     Returns:
     - Document: The modified Document object.
 
+    Conversion Factors:
+    0.0625 Inches - 57150
+    0.125 Inches - 114300
+    0.25 Inches - 228600
     0.5 Inches - 457200
     0.75 Inches - 685800
     1.0 Inches - 914400
