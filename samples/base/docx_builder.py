@@ -126,6 +126,37 @@ def add_resume_heading_as_table(doc: Document, name: str, title: str) -> Documen
     return doc
 
 
+def add_resume_address(
+    doc: Document, address: str, city: str, state: str, zip: str
+) -> Document:
+    """
+    Add an address to a resume document.
+
+    Parameters:
+    - doc (Document): The Document object to add the address to.
+    - address (str): The address to add to the document.
+    - city (str): The city to add to the document.
+    - state (str): The state to add to the document.
+    - zip (str): The ZIP code to add to the document.
+
+    Returns:
+    - Document: The modified Document object.
+    """
+    address_paragraph = doc.add_paragraph()
+    address_paragraph.paragraph_format.space_after = 0
+    address_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    address_run = address_paragraph.add_run(address)
+    address_run.font.name = "Times New Roman"
+    address_run.font.size = Pt(12)
+    city_state_zip_paragraph = doc.add_paragraph()
+    city_state_zip_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    city_state_zip_run = city_state_zip_paragraph.add_run(f"{city}, {state} {zip}")
+    city_state_zip_run.font.name = "Times New Roman"
+    city_state_zip_run.font.size = Pt(12)
+
+    return doc
+
+
 def set_margins(
     doc: Document,
     top: float = 1.0,
