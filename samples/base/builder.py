@@ -1,14 +1,17 @@
 # samples\base\builder.py
 
-import math
+# import math
 import os
-from typing import Any
+
+# from typing import Any
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
+
+# from docx.oxml import OxmlElement
+# from docx.oxml.ns import qn
 from docx.shared import Pt
-from docx.text.paragraph import Paragraph
+
+# from docx.text.paragraph import Paragraph
 
 
 # To make this work effectively, we may need to have a way to either return a paragraph
@@ -87,8 +90,10 @@ class DocxBuilder:
         return table
 
     # Add other methods here by translating existing functions to methods.
-    # Methods that modify the document should use `self.document` instead of passing `doc` as a parameter.
-    # For methods that only need to read or perform actions that don't modify the document, you might still pass `Document` objects around if necessary.
+    # Methods that modify the document should use `self.document` instead of passing
+    # `doc` as a parameter.
+    # For methods that only need to read or perform actions that don't modify the
+    # document, you might still pass `Document` objects around if necessary.
 
     # Example method adaptation for add_resume_heading
     def add_resume_heading(self, name: str, title: str):
@@ -100,7 +105,8 @@ class DocxBuilder:
             title (str): The title to display in the heading.
 
         Returns:
-            Tuple[Paragraph, Paragraph]: A tuple containing the name and title paragraphs.
+            Tuple[Paragraph, Paragraph]: A tuple containing the name and title
+            paragraphs.
         """
         name_paragraph = self.document.add_paragraph()
         name_paragraph.paragraph_format.space_after = 0
@@ -119,4 +125,5 @@ class DocxBuilder:
         return name_paragraph, title_paragraph
 
     # You should convert all other functions in a similar manner,
-    # ensuring they operate on `self.document` and make use of `self.file_path` where appropriate.
+    # ensuring they operate on `self.document` and make use of `self.file_path` where
+    # appropriate.
