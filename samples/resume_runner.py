@@ -20,20 +20,22 @@ title = os.getenv("TITLE")
 # Add name and title to the document:
 doc = docx_builder.add_resume_heading(doc, name, title)
 
-# Add the address to the document:
+# Get address, city, state, and zip code from the environment:
 address = os.getenv("ADDRESS")
 city = os.getenv("CITY")
 state = os.getenv("STATE")
 zip = os.getenv("ZIP")
 
+# Add the address to the document:
 doc = docx_builder.add_resume_address(doc, address, city, state, zip)
 
-# Add phone number to the document:
+# Get phone number from the environment:
 phone = os.getenv("PHONE")
 
+# Add phone number to the document:
 doc = docx_builder.add_resume_phone(doc, phone)
 
-# Specify email address, github, and linkedin:
+# Get email address, github, and linkedin from the environment:
 email = os.getenv("EMAIL")
 github = os.getenv("GITHUB")
 linkedin = os.getenv("LINKEDIN")
@@ -48,7 +50,7 @@ summary = doc.add_paragraph(summary_text)
 summary = docx_builder.insert_horizontal_line_paragraph_top(summary)
 summary = docx_builder.insert_horizontal_line_paragraph_bottom(summary)
 
-# Add a skills table:
+# Define a list of skills:
 skills = [
     "Git",
     "Scrum",
@@ -63,6 +65,7 @@ skills = [
     "Raspberry Pi Pico",
 ]
 
+# Add a skills table:
 table_title = doc.add_paragraph("Skills:")
 table_title.style = "Heading 1"
 for run in table_title.runs:
