@@ -63,6 +63,9 @@ skills = [
     "S3",
     "Raspberry Pi",
     "Raspberry Pi Pico",
+    "Confabulating",
+    "ChatGPT",
+    "Dockerizing Apps",
 ]
 
 # Add a skills table:
@@ -71,7 +74,10 @@ table_title.style = "Heading 1"
 for run in table_title.runs:
     run.underline = True
 
-doc = docx_builder.add_table(doc, skills, 3)
+# Specify the number of columns for the table:
+table_columns = 4
+
+doc = docx_builder.add_table(doc, skills, table_columns)
 
 # Add a horizontal line:
 doc = docx_builder.insert_horizontal_line(doc)
