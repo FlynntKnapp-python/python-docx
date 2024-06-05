@@ -20,10 +20,10 @@ def manage_docx_file(
 
     Parameters:
     - path (str): The file system path where the .docx file is saved.
-    - action (str): Action to perform on the file: 'load_or_create',
-    'delete_and_create', or 'save'. Default is 'load_or_create'.
     - document (Document): The docx.Document object. Required for 'delete_and_create'
     and 'save' action.
+    - action (str): Action to perform on the file: 'load_or_create',
+    'delete_and_create', or 'save'. Default is 'load_or_create'.
 
     Returns:
     - Document: For 'load_or_create' and 'delete_and_create' actions, returns a
