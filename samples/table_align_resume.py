@@ -21,7 +21,9 @@ doc.add_heading("Table Alignment", 0)
 
 # Calculate page width:
 page_width_in_inches = docx_builder.get_page_width_in_inches(doc, 0)
-page_width_in_inches = 8.5
+# TODO: Why does 10 work but not 8.5?
+# TODO: Also, fix "get_page_width_in_inches".
+page_width_in_inches = 10
 
 # Calculate column widths in inches:
 left_column_width = int(page_width_in_inches * 1 / 3)
