@@ -11,19 +11,23 @@ file_path = "samples/output/TableAlignResume.docx"
 
 
 # Create a new Document
-doc = Document()
+doc = Document(file_path)
+# doc = Document()
 
 # Set the document margins:
 doc = docx_builder.set_margins(doc, 0.75, 0.75, 0.75, 0.75)
 
+# Fix the use of this "magic number" in the code below:
+# Specify the page width in inches:
+page_width_in_inches = 10
+
 # Add a title to the document
-doc.add_heading("Table Alignment", 0)
+doc.add_heading(f"Table Alignment (Width: {page_width_in_inches})", 0)
 
 # Calculate page width:
-page_width_in_inches = docx_builder.get_page_width_in_inches(doc, 0)
+# page_width_in_inches = docx_builder.get_page_width_in_inches(doc, 0)
 # TODO: Why does 10 work but not 8.5?
 # TODO: Also, fix "get_page_width_in_inches".
-page_width_in_inches = 10
 
 # Calculate column widths in inches:
 left_column_width = int(page_width_in_inches * 1 / 3)
