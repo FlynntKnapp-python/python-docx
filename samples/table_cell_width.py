@@ -7,7 +7,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.shared import Inches
 
 # Specify the file path for the .docx file
-file_path = "samples/output/TableAlignResume.docx"
+file_path = "samples/output/TableCellWidth.docx"
 
 
 # Create a new Document
