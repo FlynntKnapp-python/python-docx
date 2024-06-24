@@ -18,7 +18,7 @@ name = os.getenv("NAME")
 title = os.getenv("TITLE")
 
 # Add name and title to the document:
-doc = docx_builder.add_resume_heading(doc, name, title)
+doc = docx_builder.add_centered_resume_heading(doc, name, title)
 
 # Get address, city, state, and zip code from the environment:
 address = os.getenv("ADDRESS")
@@ -75,7 +75,7 @@ for run in table_title.runs:
     run.underline = True
 
 # Specify the number of columns for the table:
-table_columns = 4
+table_columns = 3
 
 doc = docx_builder.add_table(doc, skills, table_columns)
 

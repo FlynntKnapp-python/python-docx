@@ -2,6 +2,7 @@
 
 from base import docx_builder
 from docx import Document
+import os
 
 # Specify the file path for the .docx file:
 file_path = "samples/output/MarginAdjust.docx"
@@ -9,8 +10,12 @@ file_path = "samples/output/MarginAdjust.docx"
 # Create a new (empty) Document:
 doc = Document()
 
+# Get environment varibles for user name and title:
+name = os.getenv("NAME")
+title = os.getenv("TITLE")
+
 # Add a resume heading to the document:
-doc = docx_builder.add_resume_heading(doc, "Flynnt Knapp", "Django Developer")
+doc = docx_builder.add_centered_resume_heading(doc, name, title)
 
 section = doc.sections[0]
 

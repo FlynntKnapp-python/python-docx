@@ -105,7 +105,7 @@ def add_table(doc: Document, items: list, cols: int) -> Document:
     return doc
 
 
-def add_resume_heading(doc: Document, name: str, title: str) -> Document:
+def add_centered_resume_heading(doc: Document, name: str, title: str) -> Document:
     """
     Add a heading to a resume document.
 
@@ -445,6 +445,14 @@ def list_sections(doc: Document) -> None:
             print(f"Section start: {section.start_type}")
 
     return None
+
+
+def get_page_width_in_inches(doc: Document, section: int):
+    section = doc.sections[section]
+    page_width = section.page_width - section.left_margin - section.right_margin
+    # Convert page width from Twips to inches (1 inch = 1440 Twips)
+    page_width_in_inches = page_width / 1440
+    return page_width_in_inches
 
 
 def list_runs(doc: Document) -> None:

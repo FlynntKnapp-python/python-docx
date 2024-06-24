@@ -14,7 +14,7 @@ name = os.getenv("NAME")
 title = os.getenv("TITLE")
 
 # Add a resume heading to the document:
-doc = docx_builder.add_resume_heading(doc, name, title)
+doc = docx_builder.add_centered_resume_heading(doc, name, title)
 
 # Save the document to a .docx file:
 saved = docx_builder.manage_docx_file(file_path, doc, "save")

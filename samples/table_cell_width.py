@@ -11,15 +11,16 @@ file_path = "samples/output/TableCellWidth.docx"
 
 
 # Create a new Document
-doc = Document(file_path)
-# doc = Document()
+# doc = Document(file_path)
+doc = Document()
 
 # Set the document margins:
 doc = docx_builder.set_margins(doc, 0.75, 0.75, 0.75, 0.75)
 
-# Fix the use of this "magic number" in the code below:
+# TODO Fix the use of this "magic number" in the code below:
+# "9" seems to work best for the page width in inches.
 # Specify the page width in inches:
-page_width_in_inches = 10
+page_width_in_inches = 9
 
 # Add a title to the document
 doc.add_heading(f"Table Alignment (Width: {page_width_in_inches})", 0)
@@ -98,4 +99,4 @@ left_cell_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 
 # Save the document to a .docx file
 saved = docx_builder.manage_docx_file(file_path, doc, "save")
-print(f"Saved: {file_path}")
+print(f"Saved ({saved}):  {file_path}")
