@@ -5,7 +5,7 @@ import os
 from base import docx_builder
 
 # Specify the file path for the .docx file:
-file_path = os.getenv("READ_FILE")
+file_path = os.getenv("READ_TABLE_PROPERTIES")
 
 # Load the Document:
 doc = docx_builder.manage_docx_file(file_path, "load_or_create")

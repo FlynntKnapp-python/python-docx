@@ -16,10 +16,10 @@ conversion_factor = 914400  # twips per inch
 section = doc.sections[0]
 
 # Define the margins in inches:
-margin_top = 0.50
+margin_top = 0.25
 margin_bottom = 0.50
-margin_left = 0.50
-margin_right = 0.50
+margin_left = 0.75
+margin_right = 1.00
 
 # Print the current margins:
 print("Current Margins:")
